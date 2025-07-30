@@ -33,7 +33,7 @@ warmup_steps  = int(max_steps*0.035)
 # Wandb
 wandb_entity    = "vasudev-gupta-decision-tree-analytics-services"
 wandb_project   = "foundation-training-gpt2"
-experiment_name = "test-1"
+experiment_name = "experiment-1"
 
 # ------------------------------------------------------------------------------------------------------------
 # Device:
@@ -139,6 +139,7 @@ optimizer = model.configure_optimizers(weight_decay=WEIGHT_DECAY, learning_rate=
 
 # ------------------------------------------------------------------------------------------------------------
 # Training loop
+from tqdm import tqdm
 for step in range(max_steps):
     t0 = time.time()
     last_step = (step == max_steps - 1)
@@ -164,7 +165,7 @@ for step in range(max_steps):
     optimizer.zero_grad()
     # gradient accumulation
     loss_accum = 0.0
-    for micro_step in range(grad_accum_steps):
+    for micro_step in tqdm(range(grad_accum_steps)):
         x, y = train_loader.next_batch()
         x, y = x.to(device), y.to(device)
         with torch.autocast(device_type=device, dtype=torch.bfloat16):    # check if bfloat16 is supported on the gpu you're running.
