@@ -48,6 +48,12 @@ else:
 device_type = "cuda" if device.startswith("cuda") else "cpu"
 
 # ------------------------------------------------------------------------------------------------------------
+# Checks
+assert total_batch_size % (B * BLOCK_SIZE) == 0, "make sure total batch size is divisible by B * T"
+grad_accum_steps = total_batch_size // (B * BLOCK_SIZE)
+expected_starting_loss = -math.log(1/VOCAB_SIZE)
+
+# ------------------------------------------------------------------------------------------------------------
 # Start a new wandb run to track this script.
 wandbrun = wandb.init(
                         # Set the wandb entity where your project will be logged (generally your team name).
@@ -61,6 +67,7 @@ wandbrun = wandb.init(
                                     "micro_batch_size": B,
                                     "block_size": BLOCK_SIZE,
                                     "steps": max_steps,
+                                    "grad_accum_steps": grad_accum_steps,
                                     "vocab_size": VOCAB_SIZE,
                                     "n_layer": N_LAYER,
                                     "n_head": N_HEAD,
@@ -90,9 +97,6 @@ torch.set_float32_matmul_precision("high")
 # Dataset
 train_loader = DataLoaderLite(B=B, T=BLOCK_SIZE, split="train")
 val_loader   = DataLoaderLite(B=B, T=BLOCK_SIZE, split="val")
-assert total_batch_size % (B * BLOCK_SIZE) == 0, "make sure total batch size is divisible by B * T"
-grad_accum_steps = total_batch_size // (B * BLOCK_SIZE)
-expected_starting_loss = -math.log(1/VOCAB_SIZE)
 
 # ------------------------------------------------------------------------------------------------------------
 # Messages
