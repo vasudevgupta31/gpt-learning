@@ -120,19 +120,15 @@ This implementation achieves competitive perplexity scores on standard language 
 
 This work tries to build upon several foundational papers in neural language modeling and transformer-based architectures:
 
----
-### 1. Vaswani et al. (2017) — *Attention Is All You Need*
+1. Vaswani et al. (2017) — *Attention Is All You Need*
 [*Attention is All You Need*](https://arxiv.org/abs/1706.03762).
 
----
-### 2. Radford et al. (2019) — *Language Models are Unsupervised Multitask Learners* (GPT-2)
+2. Radford et al. (2019) — *Language Models are Unsupervised Multitask Learners* (GPT-2)
 [*Language Models are Unsupervised Multitask Learners*](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf). OpenAI Technical Report.
 
----
-### 3. Brown et al. (2020) — *Language Models are Few-Shot Learners* (GPT-3)
+3. Brown et al. (2020) — *Language Models are Few-Shot Learners* (GPT-3)
   [*Language Models are Few-Shot Learners*](https://arxiv.org/abs/2005.14165). In *Advances in Neural Information Processing Systems (NeurIPS)*.
 
----
 
 This implementation replicates core architectural elements of GPT models, optimized for accessibility and experimentation under limited compute.
 
