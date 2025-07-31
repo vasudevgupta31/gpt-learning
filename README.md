@@ -123,12 +123,8 @@ This work tries to build upon several foundational papers in neural language mod
 ---
 ### 1. Vaswani et al. (2017) — *Attention Is All You Need*
 
-**Citation**:  
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017).  
 [*Attention is All You Need*](https://arxiv.org/abs/1706.03762). In *Advances in Neural Information Processing Systems (NeurIPS)*.
-
-**Summary**:  
-Introduced the **Transformer architecture**, relying entirely on attention mechanisms without recurrence or convolution. This model enabled efficient parallelization and long-range dependency modeling, becoming the foundation for modern large language models like GPT.
 
 ---
 ### 2. Radford et al. (2019) — *Language Models are Unsupervised Multitask Learners* (GPT-2)
